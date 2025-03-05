@@ -1,0 +1,455 @@
+/* ============================================================================
+   FONT IMPORT (Optional, Example)
+   ============================================================================
+   @import url('https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@600&display=swap');
+*/
+
+/* ============================================================================
+   BASIC RESET & BODY STYLING
+   ============================================================================
+   Setting default margins, font, and background color.
+*/
+html, body {
+  margin: 0;
+  padding: 0;
+  font-family: 'Nunito Sans', Arial, sans-serif;
+  background-color: #ebdab4; /* Beige background */
+  color: #333;
+}
+
+/* ============================================================================
+   HEADER & NAVIGATION
+   ============================================================================
+   This styles the top header with the logo and icon-based navigation.
+*/
+header {
+  background-color: #ebdab4;
+  padding: 10px 20px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-bottom: 3px solid #91c053;
+}
+
+header .logo {
+  height: 70px;
+  width: auto;
+  margin-right: 20px;
+}
+
+nav {
+  display: flex;
+  gap: 15px;
+}
+
+/* Nav icons are circles with background images for each link. */
+.nav-icon {
+  display: inline-block;
+  width: 40px;
+  height: 40px;
+  background-color: #91c053;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: 60% 60%;
+  border-radius: 50%;
+  text-decoration: none;
+  transition: background-color 0.3s ease;
+}
+
+.nav-icon:hover {
+  background-color: #7ea044;
+}
+
+/* Example references to icons in static/icons/ (not shown here) */
+.dashboard-link {
+  background-image: url("../icons/dashboard.png");
+}
+.account-link {
+  background-image: url("../icons/account.png");
+}
+.favorites-link {
+  background-image: url("../icons/favorites.png");
+}
+.logout-link {
+  background-image: url("../icons/log_out.png");
+}
+
+/* ============================================================================
+   HOME CENTER (INDEX PAGE)
+   ============================================================================
+   Centers the home content and optionally places a big logo in the middle.
+*/
+.home-center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: calc(100vh - 120px);
+  box-sizing: border-box;
+}
+
+.big-home-logo {
+  display: block;
+  max-width: 300px;
+  margin: 0 auto 20px auto;
+}
+
+/* ============================================================================
+   CONTAINER & BUTTON STYLING
+   ============================================================================
+   The .container is a white card, .buttons is a row of clickable buttons.
+*/
+.container {
+  text-align: center;
+  width: 90%;
+  max-width: 900px;
+  margin: 20px auto;
+  background-color: #fff;
+  border-radius: 8px;
+  padding: 20px;
+  box-shadow: 0 3px 8px rgba(0,0,0,0.15);
+}
+
+.buttons {
+  margin-top: 20px;
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.button, button {
+  background-color: #91c053;
+  color: #fff;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 25px;
+  text-decoration: none;
+  cursor: pointer;
+  margin: 5px 0;
+  transition: background-color 0.3s ease;
+}
+
+.button:hover, button:hover {
+  background-color: #7ea044;
+}
+
+/* Generic form labels and inputs */
+form label {
+  display: block;
+  margin: 10px 0 5px;
+}
+
+form input[type="text"],
+form input[type="password"],
+form input[type="number"],
+form select {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+/* ============================================================================
+   FLASH MESSAGES
+   ============================================================================
+   Display success/error messages in a styled box.
+*/
+.flashes {
+  list-style: none;
+  padding: 0;
+  margin: 10px 0;
+}
+
+.flashes li {
+  background-color: #daf7da;
+  padding: 10px;
+  border-left: 6px solid #5ca85c;
+  margin-bottom: 5px;
+  border-radius: 4px;
+}
+
+/* ============================================================================
+   FOOTER
+   ============================================================================
+   Simple footer with a top border and centered text.
+*/
+footer {
+  text-align: center;
+  padding: 15px;
+  background-color: #ebdab4;
+  margin-top: 20px;
+  border-top: 3px solid #91c053;
+}
+
+/* ============================================================================
+   PASSWORD FIELD TOGGLE
+   ============================================================================
+   Allows toggling between password and text fields.
+*/
+.password-toggle-container {
+  position: relative;
+  margin-bottom: 10px;
+}
+
+.password-toggle-container .pwd {
+  width: 100%;
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+.password-toggle-container .toggle {
+  position: absolute;
+  right: 12px;
+  top: 50%;
+  transform: translateY(-50%);
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-size: 1em;
+  color: #666;
+}
+
+/* ============================================================================
+   ALT-LINK (SIGN-UP/LOGIN SWITCH)
+   ============================================================================
+   Used to style the link that toggles between signup and login pages.
+*/
+.alt-link {
+  margin-top: 15px;
+  text-align: center;
+}
+
+.alt-link a {
+  color: #91c053;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+/* ============================================================================
+   MEAL CARDS & FAVORITES
+   ============================================================================
+   Styles for the meal cards used on dashboard and favorites pages.
+*/
+.meal-cards {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 15px;
+  margin-top: 20px;
+}
+
+.meal-card {
+  background-color: #fff;
+  border-radius: 8px;
+  flex: 1 1 calc(33.333% - 15px);
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+  padding: 15px;
+  text-align: center;
+  position: relative;
+  box-sizing: border-box;
+}
+
+.meal-card h3, .meal-card h4 {
+  margin-top: 0;
+  font-size: 1.1rem;
+}
+
+.meal-card img {
+  max-width: 100%;
+  border-radius: 8px;
+  margin-bottom: 10px;
+}
+
+.star-button {
+  background: none;
+  border: none;
+  font-size: 1.5em;
+  cursor: pointer;
+  position: absolute;
+  top: 15px;
+  right: 15px;
+}
+
+/* ============================================================================
+   TABLE / SPREADSHEET LAYOUT (REVIEW MEAL PLAN)
+   ============================================================================
+   For the table that groups meals by day in review_meal_plan.html.
+*/
+.review-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 10px;
+}
+
+.review-table th,
+.review-table td {
+  border: 1px solid #ddd;
+  padding: 10px;
+  vertical-align: middle;
+  text-align: center;
+  font-size: 1rem;
+  background-color: #fff;
+}
+
+.review-table th {
+  background-color: #faf4e5; /* Light beige header row */
+  font-weight: bold;
+}
+
+/* ============================================================================
+   GOALS GRID (MEAL_PLAN.HTML)
+   ============================================================================
+   Used for displaying radio buttons in a card-like layout.
+*/
+.goals-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin: 10px 0;
+}
+
+.goal-card {
+  display: inline-flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: #eee;
+  border-radius: 8px;
+  padding: 10px;
+  width: 120px;
+  cursor: pointer;
+  position: relative;
+  text-align: center;
+}
+
+.goal-card input[type="checkbox"],
+.goal-card input[type="radio"] {
+  position: absolute;
+  opacity: 0;
+  cursor: pointer;
+}
+
+.goal-card .goal-icon {
+  font-size: 2em;
+  margin-bottom: 5px;
+}
+
+.goal-card .goal-text {
+  font-size: 0.9em;
+  color: #333;
+}
+
+.goal-card input[type="checkbox"]:checked + .goal-icon,
+.goal-card input[type="checkbox"]:checked ~ .goal-text,
+.goal-card input[type="radio"]:checked + .goal-icon,
+.goal-card input[type="radio"]:checked ~ .goal-text {
+  font-weight: bold;
+  color: #91c053;
+}
+
+/* ============================================================================
+   MEAL DETAILS PAGE
+   ============================================================================
+   Styles for the meal details layout and lists.
+*/
+
+.meal-title {
+  text-align: center;
+  margin-bottom: 20px;
+  font-size: 1.5rem;
+}
+
+.meal-top-section {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.meal-image {
+  max-width: 300px;
+  border-radius: 8px;
+  display: block;
+  margin: 0 auto 10px auto;
+}
+
+.prep-time {
+  font-weight: bold;
+  margin: 0;
+  color: #666;
+}
+
+.equipment-list,
+.ingredients-list,
+.instructions-list {
+  margin: 10px 0;
+  padding-left: 20px;
+}
+
+.instructions-list li {
+  margin-bottom: 5px;
+}
+
+/* ============================================================================
+   HORIZONTAL FORM LAYOUT (PERSONAL INFO, MY ACCOUNT)
+   ============================================================================
+   Puts label and input on the same line.
+*/
+.horizontal-form .form-row {
+  display: flex;
+  align-items: center;
+  margin-bottom: 15px;
+}
+
+.horizontal-form .form-row label {
+  width: 180px;
+  font-weight: bold;
+  margin-right: 10px;
+}
+
+.horizontal-form .form-row input,
+.horizontal-form .form-row select {
+  flex: 1;
+}
+
+.inline-group {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+/* ============================================================================
+   DASHBOARD FAVORITES HOVER
+   ============================================================================
+   This styles the 'Add to Favorites' button so it only appears when hovering
+   over the meal card.
+*/
+
+/* Hide the favorites form/button by default */
+.favorite-hover-form {
+  position: absolute;
+  bottom: 15px;
+  right: 15px;
+  display: none;
+}
+
+.favorite-hover-btn {
+  /* Use the same design as the top-right icon if desired */
+  width: 40px;
+  height: 40px;
+  background-color: #91c053;
+  border: none;
+  border-radius: 50%;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: 60% 60%;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  background-image: url("../icons/favorites.png"); /* white star icon */
+}
+
+.favorite-hover-btn:hover {
+  background-color: #7ea044;
+}
+
+/* Show the form when hovering over the meal card */
+.meal-card:hover .favorite-hover-form {
+  display: block;
+}
