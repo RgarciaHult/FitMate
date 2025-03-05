@@ -1,0 +1,95 @@
+<!-- MEAL PLAN GENERATION PAGE -->
+{% extends "base.html" %}
+{% block content %}
+<div class="container">
+  <h2>Generate Your Meal Plan</h2>
+  <!-- Form to select goal, meals per day, and duration -->
+  <form method="post">
+    <p>Select Fitness/Diet Goal (only one):</p>
+    <div class="goals-grid">
+      <label class="goal-card">
+        <input type="radio" name="goal" value="lose_weight">
+        <div class="goal-icon">⚖️</div>
+        <div class="goal-text">Lose Weight</div>
+      </label>
+      <label class="goal-card">
+        <input type="radio" name="goal" value="gain_muscle">
+        <div class="goal-icon">💪</div>
+        <div class="goal-text">Gain Muscle</div>
+      </label>
+      <label class="goal-card">
+        <input type="radio" name="goal" value="gain_weight">
+        <div class="goal-icon">➕</div>
+        <div class="goal-text">Gain Weight</div>
+      </label>
+      <label class="goal-card">
+        <input type="radio" name="goal" value="maintain_weight">
+        <div class="goal-icon">⚖️</div>
+        <div class="goal-text">Maintain Weight</div>
+      </label>
+      <label class="goal-card">
+        <input type="radio" name="goal" value="overall_health">
+        <div class="goal-icon">❤️</div>
+        <div class="goal-text">Overall Health</div>
+      </label>
+      <label class="goal-card">
+        <input type="radio" name="goal" value="low_carb">
+        <div class="goal-icon">🥦</div>
+        <div class="goal-text">Low Carb</div>
+      </label>
+      <label class="goal-card">
+        <input type="radio" name="goal" value="high_protein">
+        <div class="goal-icon">🍗</div>
+        <div class="goal-text">High Protein</div>
+      </label>
+      <label class="goal-card">
+        <input type="radio" name="goal" value="low_fat">
+        <div class="goal-icon">🏃</div>
+        <div class="goal-text">Low Fat</div>
+      </label>
+      <label class="goal-card">
+        <input type="radio" name="goal" value="vegetarian">
+        <div class="goal-icon">🥕</div>
+        <div class="goal-text">Vegetarian</div>
+      </label>
+      <label class="goal-card">
+        <input type="radio" name="goal" value="vegan">
+        <div class="goal-icon">🌱</div>
+        <div class="goal-text">Vegan</div>
+      </label>
+      <label class="goal-card">
+        <input type="radio" name="goal" value="keto">
+        <div class="goal-icon">🥑</div>
+        <div class="goal-text">KETO</div>
+      </label>
+      <label class="goal-card">
+        <input type="radio" name="goal" value="save_time">
+        <div class="goal-icon">⏰</div>
+        <div class="goal-text">Save Time</div>
+      </label>
+    </div>
+
+    <div class="form-row">
+      <label for="meals_per_day">Meals Per Day:</label>
+      <select id="meals_per_day" name="meals_per_day" required>
+        <option value="Breakfast">Breakfast</option>
+        <option value="Lunch">Lunch</option>
+        <option value="Dinner">Dinner</option>
+        <option value="All 3">All 3</option>
+        <option value="Breakfast & Lunch">Breakfast & Lunch</option>
+        <option value="Breakfast & Dinner">Breakfast & Dinner</option>
+        <option value="Lunch & Dinner">Lunch & Dinner</option>
+      </select>
+    </div>
+
+    <div class="form-row">
+      <label for="duration">Plan Duration (Days 1-15):</label>
+      <input type="number" id="duration" name="duration" min="1" max="15" required>
+    </div>
+
+    <div class="buttons">
+      <button type="submit" class="button">Generate Meal Plan</button>
+    </div>
+  </form>
+</div>
+{% endblock %}

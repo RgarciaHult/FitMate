@@ -1,0 +1,39 @@
+<!-- DASHBOARD PAGE -->
+{% extends "base.html" %}
+{% block content %}
+<div class="container">
+  <h2>Hello, {{ session.username|title }}</h2>
+  <h3>Day {{ day }}</h3>
+  <!-- Each meal is displayed as a card with actions (done, skip, details, favorite) -->
+  <div class="meal-cards">
+    {% for meal in day_meals %}
+      <div class="meal-card">
+        <h4>{{ meal.meal_type|title }}</h4>
+        <img src="{{ url_for('static', filename='images/meals/' ~ meal.identifier ~ '.png') }}"
+             alt="{{ meal.name|title }}">
+        <p>{{ meal.name|title }}</p>
+        <p>Prep time: {{ meal.prep_time }} minutes</p>
+        <p>Status: {{ meal.status|title }}</p>
+        
+        <!-- Show Details -->
+        <form action="{{ url_for('meal_details', meal_id=meal.id) }}" method="get">
+          <button type="submit">Show Details</button>
+        </form>
+        <!-- Skip -->
+        <form action="{{ url_for('skip_meal', meal_id=meal.id, day=meal.day, meal_type=meal.meal_type) }}" method="post">
+          <button type="submit">Skip</button>
+        </form>
+        <!-- Done -->
+        <form action="{{ url_for('done_meal', meal_id=meal.id, day=meal.day, meal_type=meal.meal_type) }}" method="post">
+          <button type="submit">Done</button>
+        </form>
+
+        <!-- Favorites button: appears on hover using CSS -->
+        <form action="{{ url_for('add_favorite_route', meal_id=meal.id) }}" method="post" class="favorite-hover-form">
+          <button type="submit" class="favorite-hover-btn" aria-label="Add to Favorites"></button>
+        </form>
+      </div>
+    {% endfor %}
+  </div>
+</div>
+{% endblock %}

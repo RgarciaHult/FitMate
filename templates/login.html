@@ -1,0 +1,37 @@
+<!-- LOGIN PAGE -->
+{% extends "base.html" %}
+{% block content %}
+<div class="container">
+  <h2>Log In</h2>
+  <!-- Form for logging in -->
+  <form method="post">
+    <label for="username">Username:</label>
+    <input type="text" id="username" name="username" required>
+    
+    <label for="password">Password:</label>
+    <div class="password-toggle-container">
+      <input type="password" id="password" name="password" class="pwd" required>
+      <button type="button" class="toggle" onclick="togglePassword('password', this)">👁️</button>
+    </div>
+
+    <button type="submit">Log In</button>
+  </form>
+  <!-- Link to sign up if user is new -->
+  <p class="alt-link">
+    New here? <a href="{{ url_for('signup') }}">Sign Up</a>
+  </p>
+</div>
+<script>
+function togglePassword(fieldId, btn) {
+  // Toggles the visibility of the password field
+  const input = document.getElementById(fieldId);
+  if (input.type === "password") {
+    input.type = "text";
+    btn.textContent = "🙈";
+  } else {
+    input.type = "password";
+    btn.textContent = "👁️";
+  }
+}
+</script>
+{% endblock %}

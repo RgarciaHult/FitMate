@@ -1,0 +1,48 @@
+<!-- MEAL DETAILS PAGE -->
+{% extends "base.html" %}
+{% block content %}
+<div class="container meal-details-container">
+  <h2 class="meal-title">{{ meal.name|title }}</h2>
+  <div class="meal-top-section">
+    <img class="meal-image" src="{{ url_for('static', filename='images/meals/' ~ meal.identifier ~ '.png') }}" alt="Meal Image">
+    <p class="prep-time">Prep time: {{ meal.prep_time }} minutes</p>
+  </div>
+  
+  <h3>Equipment Needed</h3>
+  {% if meal.equipment_list %}
+    <ul class="equipment-list">
+      {% for item in meal.equipment_list %}
+        <li>{{ item }}</li>
+      {% endfor %}
+    </ul>
+  {% else %}
+    <p>No special equipment.</p>
+  {% endif %}
+  
+  <h3>Ingredients</h3>
+  {% if meal.ingredients_list %}
+    <ul class="ingredients-list">
+      {% for ing in meal.ingredients_list %}
+        <li>{{ ing }}</li>
+      {% endfor %}
+    </ul>
+  {% else %}
+    <p>No ingredients found.</p>
+  {% endif %}
+  
+  <h3>Instructions</h3>
+  {% if meal.instructions_list %}
+    <ol class="instructions-list">
+      {% for step in meal.instructions_list %}
+        <li>{{ step }}</li>
+      {% endfor %}
+    </ol>
+  {% else %}
+    <p>No instructions provided.</p>
+  {% endif %}
+  
+  <div class="buttons">
+    <a class="button" href="{{ url_for('dashboard') }}">Back to Dashboard</a>
+  </div>
+</div>
+{% endblock %}

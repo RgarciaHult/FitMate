@@ -1,0 +1,43 @@
+<!-- REVIEW MEAL PLAN PAGE -->
+{% extends "base.html" %}
+{% block content %}
+<div class="container">
+  <h2>Review Your Generated Meal Plan</h2>
+  <p>You can change meals before finalizing.</p>
+
+  <form method="post">
+    {% for d in days_map|sort %}
+      <table class="review-table">
+        <tr>
+          <th colspan="4">Day {{ d }}</th>
+        </tr>
+        <tr>
+          <th>Image</th>
+          <th>Meal Name</th>
+          <th>Prep Time</th>
+          <th>Action</th>
+        </tr>
+        {% for meal in days_map[d] %}
+        <tr>
+          <td>
+            <img src="{{ url_for('static', filename='images/meals/' ~ meal.identifier ~ '.png') }}"
+                 alt="{{ meal.name|title }}" style="max-width:80px; border-radius:4px;">
+          </td>
+          <td>{{ meal.name|title }}</td>
+          <td>{{ meal.prep_time }} minutes</td>
+          <td>
+            <a class="button" href="{{ url_for('change_meal', day=meal.day, meal_type=meal.meal_type) }}">
+              Change Meal
+            </a>
+          </td>
+        </tr>
+        {% endfor %}
+      </table>
+      <br>
+    {% endfor %}
+    <div class="buttons">
+      <button type="submit" class="button">Confirm Plan</button>
+    </div>
+  </form>
+</div>
+{% endblock %}

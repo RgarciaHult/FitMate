@@ -1,0 +1,23 @@
+<!-- FAVORITES PAGE -->
+{% extends "base.html" %}
+{% block content %}
+<div class="container">
+  <h2>Your Favorite Meals</h2>
+  <section class="favorites-list">
+    {% if meals %}
+      <div class="meal-cards">
+        {% for meal in meals %}
+          <div class="meal-card">
+            <h4>{{ meal.name|title }}</h4>
+            <img src="{{ url_for('static', filename='images/meals/' ~ meal.identifier ~ '.png') }}" alt="Meal Image">
+            <p>Prep time: {{ meal.prep_time }} minutes</p>
+            <p>{{ meal.ingredients }}</p>
+          </div>
+        {% endfor %}
+      </div>
+    {% else %}
+      <p>No favorite meals added yet.</p>
+    {% endif %}
+  </section>
+</div>
+{% endblock %}

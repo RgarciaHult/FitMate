@@ -1,0 +1,46 @@
+<!-- BASE TEMPLATE -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <!-- Basic HTML head setup -->
+  <meta charset="UTF-8">
+  <title>FitMate</title>
+  <!-- Link to global CSS -->
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+
+<header>
+  <!-- Top bar with logo and nav icons -->
+  <img src="{{ url_for('static', filename='images/logo.png') }}" alt="FitMate Logo" class="logo">
+  <nav>
+    <!-- Icon-based navigation for Dashboard, Account, Favorites, and Logout -->
+    <a href="{{ url_for('dashboard') }}" class="nav-icon dashboard-link" aria-label="Dashboard"></a>
+    <a href="{{ url_for('my_account') }}" class="nav-icon account-link" aria-label="My Account"></a>
+    <a href="{{ url_for('favorites') }}" class="nav-icon favorites-link" aria-label="Favorites"></a>
+    <a href="{{ url_for('logout') }}" class="nav-icon logout-link" aria-label="Log Out"></a>
+  </nav>
+</header>
+
+<main>
+  <!-- Display any flash messages here -->
+  {% with messages = get_flashed_messages() %}
+    {% if messages %}
+      <ul class="flashes">
+        {% for message in messages %}
+          <li>{{ message }}</li>
+        {% endfor %}
+      </ul>
+    {% endif %}
+  {% endwith %}
+  <!-- Content from child templates is inserted below -->
+  {% block content %}{% endblock %}
+</main>
+
+<footer>
+  <!-- Simple footer with a copyright -->
+  <p>&copy; 2025 FitMate</p>
+</footer>
+
+</body>
+</html>

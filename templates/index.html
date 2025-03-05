@@ -1,0 +1,16 @@
+<!-- HOME PAGE -->
+{% extends "base.html" %}
+{% block content %}
+<div class="home-center">
+  <div class="container">
+    <!-- Large logo above the welcome message -->
+    <img src="{{ url_for('static', filename='images/logo.png') }}" alt="FitMate Logo" class="big-home-logo">
+    <h1>Welcome to FitMate</h1>
+    <div class="buttons">
+      <!-- Buttons to log in or sign up -->
+      <a class="button" href="{{ url_for('login') }}">Log In</a>
+      <a class="button" href="{{ url_for('signup') }}">Sign Up</a>
+    </div>
+  </div>
+</div>
+{% endblock %}

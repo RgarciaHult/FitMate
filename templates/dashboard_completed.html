@@ -1,0 +1,12 @@
+<!-- DASHBOARD WHEN ALL MEALS ARE COMPLETE -->
+{% extends "base.html" %}
+{% block content %}
+<div class="container">
+  <h2>All Meal Plans Completed!</h2>
+  <p>You have finished all meals. Great job!</p>
+  <!-- Button to generate a new plan, with some spacing above -->
+  <div style="margin-top: 20px;">
+    <a class="button" href="{{ url_for('meal_plan') }}">Generate a New Plan</a>
+  </div>
+</div>
+{% endblock %}

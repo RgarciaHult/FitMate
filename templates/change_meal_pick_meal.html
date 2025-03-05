@@ -1,0 +1,25 @@
+<!-- CHANGE MEAL STEP 2: PICK MEAL FROM SELECTED CATEGORY -->
+{% extends "base.html" %}
+{% block content %}
+<div class="container">
+  <h2>Change Meal - Step 2: Select a Meal</h2>
+  <p>Current Meal: {{ current_record.old_meal_name|title }}</p>
+  <p>Chosen Category: {{ chosen_category|title }}</p>
+  
+  <form method="post">
+    <input type="hidden" name="step" value="update_meal">
+    <p>Select a meal from the "{{ chosen_category|title }}" category:</p>
+    <select name="new_meal_id" required>
+      <option value="">-- Choose Meal --</option>
+      {% for meal in possible_meals %}
+        <option value="{{ meal.id }}">{{ meal.name|title }} ({{ meal.prep_time }} min)</option>
+      {% endfor %}
+    </select>
+
+    <div class="buttons">
+      <button type="submit" class="button">Update Meal</button>
+      <a class="button" href="{{ url_for('review_meal_plan') }}">Cancel</a>
+    </div>
+  </form>
+</div>
+{% endblock %}
